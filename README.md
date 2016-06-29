@@ -12,4 +12,4 @@ An application at allows users to log in and save their favorite works of art fr
 WIREFRAMES
 <img src="home.png">
 
-<img src="gallery.png"
+<img src="gallery.png">
