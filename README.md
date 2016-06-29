@@ -9,4 +9,5 @@ An application at allows users to log in and save their favorite works of art fr
 - As a user I should be able to view my favorite works in a clean and simple viewframe.
 
 WIREFRAMES
+[<img src="homeWireframe.png">]
 
