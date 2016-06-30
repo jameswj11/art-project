@@ -1,8 +1,12 @@
 'use strict'
-const express     = require('express')
-const logger      = require('morgan')
-const path        = require('path')
-const bodyParser  = require('body-parser')
+const express         = require('express')
+const logger          = require('morgan')
+const path            = require('path')
+const bodyParser      = require('body-parser')
+const homeController  = require('./controllers/home_controller')
+const apiController   = require('./controllers/api_controller')
+const rijksController = require('./controllers/rijks_controller')
+
 
 //server setup
 const app   = express()
@@ -22,4 +26,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 //routing
-app.get('/', (req, res)=>{res.render('home')})
+app.use('/', homeController)
+app.use('/api', apiController)
+app.use('/rijks', rijksController)
