@@ -1,5 +1,5 @@
 # art-project
-An application at allows users to log in and save their favorite works of art from museums around the world!
+An application that allows users to log in and save their favorite works of art from museums around the world!
 
 - Imagine a virtual museum or art gallery of the world's best art, where you can log in and save your favorite works, available to view any place and any time you have an internet collection. The application would use art API's like Artsy's API, Europeana API, and the Rijksmuseum API, which houses a database of their entire collection - one of the finest of Dutch art in the world. The applicaton would store each user's favorites and present them in a visually pleasing way, clean and neat with a focus on the art itself and on smooth functionality.
 

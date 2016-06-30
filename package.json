@@ -1,0 +1,38 @@
+{
+  "name": "art-project",
+  "version": "0.0.1",
+  "description": "An application that allows users to browse museum collections and save their favorite artworks",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameswj11/art-project.git"
+  },
+  "keywords": [
+    "art",
+    "museum",
+    "collection",
+    "artwork"
+  ],
+  "author": "James Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jameswj11/art-project/issues"
+  },
+  "homepage": "https://github.com/jameswj11/art-project#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.6",
+    "mongodb": "^2.1.18",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7"
+  }
+}
