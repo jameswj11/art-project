@@ -16,3 +16,10 @@ app.use(bodyParser.json())
 
 //public
 app.use(express.static(path.join(__dirname, 'public')))
+
+//views
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
+//routing
+app.get('/', (req, res)=>{res.render('home')})
