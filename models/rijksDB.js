@@ -1,6 +1,6 @@
 'use strict'
-const API_KEY       = process.env.RIJKSMUSEUM_AP;
-const request       = require('request')
+const API_KEY = process.env.RIJKSMUSEUM_API;
+const request = require('request')
 
 module.exports = {
   searchArt: function(req, res, next){
@@ -26,11 +26,11 @@ module.exports = {
     request({
       url: 'https://www.rijksmuseum.nl/api/en/collection/',
       qs: filterObj,
-      json:true
-      }, function(err, response, body){
+      json: true},
+      function(err, response, body){
         if(err) throw err;
         res.filteredArt = body.artObjects;
         next()
       })
   }
-}
+};

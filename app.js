@@ -3,22 +3,33 @@ const express         = require('express')
 const logger          = require('morgan')
 const path            = require('path')
 const bodyParser      = require('body-parser')
-const homeController  = require('./controllers/home_controller')
-const apiController   = require('./controllers/api_controller')
-const rijksController = require('./controllers/rijks_controller')
-const momaController  = require('./controllers/moma_controller')
+const session         = require('express-session')
+const methodOverride  = require('method-override')
+const homeRoute       = require('./routes/home_controller')
+const userRoute       = require('./routes/user')
+const apiRoute        = require('./routes/api_controller')
+const rijksRoute      = require('./routes/rijks_controller')
+const momaRoute       = require('./routes/moma_controller')
 
 
 //server setup
 const app   = express()
 const PORT  = process.env.PORT || process.argv[2] || 3000;
-
 app.listen(PORT, ()=>{console.log('server started on port', PORT)})
 
 //middlewares
 app.use(logger('dev'))
 app.use(bodyParser.json())
+app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')))
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'supersecret',
+  cookie: {maxAge: 999999}
+}))
+
 
 //public
 app.use(express.static(path.join(__dirname, 'public')))
@@ -28,7 +39,8 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 //routing
-app.use('/', homeController)
-app.use('/api', apiController)
-app.use('/rijks', rijksController)
-app.use('/moma', momaController)
+app.use('/', homeRoute)
+app.use('/user', userRoute)
+app.use('/api', apiRoute)
+app.use('/rijks', rijksRoute)
+app.use('/moma', momaRoute)
