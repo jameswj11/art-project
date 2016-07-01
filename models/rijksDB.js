@@ -7,7 +7,7 @@ module.exports = {
     const filterObj = {
       imgonly: 'True',
       format: 'json',
-      ps: 999999,
+      ps: 100,
       key: API_KEY,
     };
 
@@ -28,6 +28,7 @@ module.exports = {
       qs: filterObj,
       json:true
       }, function(err, response, body){
+        if(err) throw err;
         res.filteredArt = body.artObjects;
         next()
       })

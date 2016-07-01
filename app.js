@@ -6,6 +6,7 @@ const bodyParser      = require('body-parser')
 const homeController  = require('./controllers/home_controller')
 const apiController   = require('./controllers/api_controller')
 const rijksController = require('./controllers/rijks_controller')
+const momaController  = require('./controllers/moma_controller')
 
 
 //server setup
@@ -30,3 +31,4 @@ app.set('view engine', 'ejs')
 app.use('/', homeController)
 app.use('/api', apiController)
 app.use('/rijks', rijksController)
+app.use('/moma', momaController)

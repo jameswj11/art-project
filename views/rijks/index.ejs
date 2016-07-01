@@ -3,9 +3,22 @@
  <% include ../partials/head %>
 <body>
   <div class="gallery">
-    <h3>BROWSE THE COLLECTION</h3>
-    <div class="container">
-      <div class="row">
+    <h3>Browse the Collection</h3>
+    <div class="filter">
+      <input class="artist" type="text" placeholder="Artist">
+      <select name="select" id="">
+        <option value="all">All Results</option>
+        <option value="painting">Paintings</option>
+        <option value="sculpture">Sculptures</option>
+        <option value="photograph">Photographs</option>
+        <option value="drawing">Drawings</option>
+        <option value="print">Prints</option>
+      </select>
+      <button>FILTER</button>
+      <div class="results">
+        <div class="container">
+          Search for artworks by applying the filters above.
+        </div>
       </div>
     </div>
   </div>
