@@ -24,6 +24,12 @@ body {
   color: white;
 }
 
+.logout {
+  text-align: right;
+  padding-right: 50px;
+  margin-top: 10px;
+}
+
 img {
   max-width: 200px;
   padding: 10px;
@@ -53,8 +59,8 @@ h1.login {
   color: white;
 }
 
-h3 {
-  color: black;
+h3.browse {
+  color: white;
   padding-top: 30px;
 }
 
@@ -98,3 +104,5 @@ input.button {
   color: black;
   background-color: white;
 }
+
+

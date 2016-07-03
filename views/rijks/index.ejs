@@ -3,10 +3,14 @@
  <% include ../partials/head %>
 <body>
 <% if(user) { %>
-<h1>USER TRUE</h1>
+  <div class="logout">
+    <form action="user/logout?_method=DELETE" method="post">
+      <input class="button" type="submit" value="logout">
+    </form>
+  </div>
 <% } %>
   <div class="gallery">
-    <h3>Browse the Collection</h3>
+    <h3 class="browse">Browse the Collection</h3>
     <div class="filter">
       <input class="artist" type="text" placeholder="Artist">
       <select name="select" id="">
@@ -18,10 +22,10 @@
         <option value="print">Prints</option>
       </select>
       <button>FILTER</button>
-      <div class="results">
-        <div class="container">
-          Search for artworks by applying the filters above.
-        </div>
+    </div>
+    <div class="results">
+      <div class="container">
+        Search for artworks by applying the filters above.
       </div>
     </div>
   </div>
