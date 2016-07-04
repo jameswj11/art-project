@@ -5,6 +5,7 @@
   <div class="main">
     <h1>Explore the Rijksmuseum Collection</h1>
       <% if(user) { %>
+      <h1>USER TRUE</h1>
         <h4>Welcome, <%= user.fname %></h4>
       <div>
         <ul class="nav">
@@ -18,6 +19,7 @@
         </form>
       </div>
       <% } else { %>
+      <h1>USER FALSE</h1>
       <div>
         <ul class="nav">
           <li>

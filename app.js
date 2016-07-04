@@ -5,12 +5,12 @@ const path            = require('path')
 const bodyParser      = require('body-parser')
 const session         = require('express-session')
 const methodOverride  = require('method-override')
-const homeRoute       = require('./routes/home_controller')
-const userRoute       = require('./routes/user')
+const homeRoute       = require('./routes/home_route')
+const userRoute       = require('./routes/user_route')
 const saveRoute       = require('./routes/save_route')
-const apiRoute        = require('./routes/api_controller')
-const rijksRoute      = require('./routes/rijks_controller')
-const momaRoute       = require('./routes/moma_controller')
+const apiRoute        = require('./routes/api_route')
+const rijksRoute      = require('./routes/rijks_route')
+const momaRoute       = require('./routes/moma_route')
 
 
 //server setup

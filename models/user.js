@@ -44,10 +44,16 @@ function loginUser(req, res, next){
         console.log('can\'t find user with email', email)
       } else if(bcrypt.compareSync(password, user.passwordDigest)){
         res.user = user;
+        console.log(user)
       };
       next()
     })
   })
 };
+
+function checkUser(req, res, next){
+  console.log(user)
+  next()
+}
 
 module.exports = {createUser, loginUser}

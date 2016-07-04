@@ -6,7 +6,19 @@ $(function(){
   const $results = $('.results')
   const $container = $('.container')
   const $img = $('img')
-  // const API_KEY = process.env.RIJKSMUSEUM_API;
+
+  //save button as a form
+  // const $save = $('<form>')
+  // const $input = $('<input>')
+
+  // $save.attr('action', '/save')
+  //      .attr('method', 'post')
+
+  // $input.attr('type', 'submit')
+  //       .attr('value', 'login')
+  //       .attr('name', 'save')
+
+  // $save.append($input)
 
   $('button').click(function(){
     let queryObject = {}
@@ -23,9 +35,27 @@ $(function(){
       data: queryObject,
       success: function(data){
         data.forEach(function(artwork){
-          const $artwork = $('<img>')
+          //create artwork elem
+          const $artwork = $('<div>')
+
+          const $image = $('<img>')
             .attr('src', artwork.webImage.url)
             .val(artwork.links.self)
+
+          const $saveForm = $('<form>')
+          const $input = $('<input>')
+
+          $saveForm.attr('action', '/save')
+                   .attr('method', 'post')
+
+          $input.attr('type', 'submit')
+                .attr('value', 'save')
+                .attr('name', 'save')
+
+          $saveForm.append($input)
+
+          $artwork.append($image)
+                  .append($saveForm)
           $results.append($artwork)
         })
       }
@@ -33,18 +63,16 @@ $(function(){
   })
 
   $results.on('click', 'img', function(){
-    const favorite = {source: $(this).attr('src')}
+    const source = {source: $(this).attr('src')}
     console.log($(this).attr('src'))
   //click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
-  $.ajax({
-    url: '/save',
-    method: 'GET',
-    data: favorite,
-    success: function(data){
-      console.log('ajax call success!')
-      // console.log($(this))
-    }
-  })
-
+    $.ajax({
+      url: '/save',
+      method: 'POST',
+      data: source,
+      success: function(data){
+        console.log('ajax call POST!')
+      }
+    })
   })
 })

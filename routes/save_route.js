@@ -1,10 +1,16 @@
 'use strict'
 const router = require('express').Router()
+const {saveArt} = require('../models/save')
+const user = require('../models/user')
 
-router.get('/', function(req, res){
-  const imageSource = req.query.source;
-  res.send('saved on the back end as a send')
-  console.log(imageSource + ' MADE IT TO THE BACK END!!!!')
+router.get('/', (req, res)=>{res.render('./save', {user: req.session.user})})
+
+router.post('/', saveArt, function(req, res){
+  const imageSource = req.body.source;
+  // res.render('/', {user: req.session})
+  console.log(imageSource + ' POST TO THE BACK END!!!!')
+  console.log('user: ' + req.session.user)
+  res.render('./save', {user: req.session.user})
 })
 
 module.exports = router;
