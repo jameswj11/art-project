@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+ <% include ./partials/head %>
+<body>
+  <div class="main">
+    <h1>Explore the Rijksmuseum Collection</h1>
+      <% if(user) { %>
+        <h4>Welcome, <%= user.fname %></h4>
+      <div>
+        <ul class="nav">
+          <li>
+            <a href="/collection">MY COLLECTION</a>
+            <a href="/rijks">EXPLORE ART</a>
+          </li>
+        </ul>
+        <form action="user/logout?_method=DELETE" method="post">
+          <input class="button" type="submit" value="logout">
+        </form>
+      </div>
+      <% } else { %>
+      <div>
+        <ul class="nav">
+          <li>
+            <a href="/user/login">LOGIN</a>
+            <a href="/user/new">SIGN UP</a>
+          </li>
+        </ul>
+      </div>
+      <% } %>
+  </div>
+</body>
+</html>
