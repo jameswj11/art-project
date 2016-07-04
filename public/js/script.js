@@ -43,7 +43,7 @@ $(function(){
       queryObject.principalMaker = $('.artist').val()
     }
 
-    if($('.type').val() !== ''){
+    if($('.type').val() !== 'all'){
       queryObject.type = $('.type').val()
     }
 
