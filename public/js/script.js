@@ -6,6 +6,7 @@ $(function(){
   const $results = $('.results')
   const $container = $('.container')
   const $img = $('img')
+  // const API_KEY = process.env.RIJKSMUSEUM_API;
 
   $('button').click(function(){
     let queryObject = {}
@@ -24,7 +25,7 @@ $(function(){
         data.forEach(function(artwork){
           const $artwork = $('<img>')
             .attr('src', artwork.webImage.url)
-            .val(artwork.objectNumber)
+            .val(artwork.links.self)
           $results.append($artwork)
         })
       }
@@ -33,14 +34,14 @@ $(function(){
 
   $results.on('click', 'img', function(){
     const favorite = {source: $(this).attr('src')}
-    console.log($(this).val + ' image saved!')
+    console.log($(this).attr('src'))
   //click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
   $.ajax({
     url: '/save',
     method: 'GET',
     data: favorite,
     success: function(data){
-      console.log('success!')
+      console.log('ajax call success!')
       // console.log($(this))
     }
   })
