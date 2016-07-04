@@ -6,19 +6,34 @@ $(function(){
   const $results = $('.results')
   const $container = $('.container')
   const $img = $('img')
+  const $modal = $('.modal')
+  const $modalContent = $('.modalContent')
+  const $modalClose = $('.modalClose')
 
-  //save button as a form
-  // const $save = $('<form>')
-  // const $input = $('<input>')
+  $.ajax({
+    url: '/api/rijks',
+    method: 'GET',
+    dataType: 'json',
+    success: function(data){
+      data.forEach(function(artwork){
+          const $artwork = $('<div>')
 
-  // $save.attr('action', '/save')
-  //      .attr('method', 'post')
+          const $image = $('<img>')
+            .attr('src', artwork.webImage.url)
+            .val(artwork.longTitle)
 
-  // $input.attr('type', 'submit')
-  //       .attr('value', 'login')
-  //       .attr('name', 'save')
+          const $title = $('<div>')
+            .addClass('info')
+            .text(artwork.longTitle)
 
-  // $save.append($input)
+          $artwork.append($image)
+                  .append($title)
+                  // .append($saveForm)
+          $results.append($artwork)
+        })
+      }
+    })
+
 
   $('button').click(function(){
     let queryObject = {}
@@ -26,6 +41,10 @@ $(function(){
 
     if($('.artist').val()!== '') {
       queryObject.principalMaker = $('.artist').val()
+    }
+
+    if($('.type').val() !== ''){
+      queryObject.type = $('.type').val()
     }
 
     $.ajax({
@@ -40,36 +59,35 @@ $(function(){
 
           const $image = $('<img>')
             .attr('src', artwork.webImage.url)
-            .val(artwork.links.self)
+            .val(artwork.longTitle)
 
-          const $saveForm = $('<form>')
-          const $input = $('<input>')
-
-          $saveForm.attr('action', '/save')
-                   .attr('method', 'post')
-
-          $input.attr('type', 'submit')
-                .attr('value', 'save')
-                .attr('name', 'save')
-
-          $saveForm.append($input)
+          const $title = $('<div>')
+            .addClass('info')
+            .text(artwork.longTitle)
 
           $artwork.append($image)
-                  .append($saveForm)
+                  .append($title)
+                  // .append($saveForm)
           $results.append($artwork)
         })
       }
     })
   })
 
-  $results.on('click', 'img', function(){
-    const source = {source: $(this).attr('src')}
-    console.log($(this).attr('src'))
-  //click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
+  // const toggleModal = ()=>{$modal.fadeToggle()}
+
+  $results.on('dblclick', 'img', function(){
+    $(this).css('border-style', 'solid').css('border-color', 'red').css('border-width', '2px')
+    const artwork = {
+      source: $(this).attr('src'),
+      info: $(this).val()
+    }
+
+  // click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
     $.ajax({
       url: '/save',
       method: 'POST',
-      data: source,
+      data: artwork,
       success: function(data){
         console.log('ajax call POST!')
       }

@@ -7,7 +7,7 @@ function saveArt(req, res, next){
   const userEmail = req.session.user.email;
   console.log(req.session.user.email)
   MongoClient.connect(dbConnection, function(err, db){
-    let favorites = req.body.source;
+    let favorites = req.body;
     let saveData = {$push: {favorites}}
     db.collection('users').update({'email': userEmail}, saveData, function(err, result){
       if(err) throw err;
