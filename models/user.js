@@ -7,7 +7,7 @@ const salt          = bcrypt.genSalt(10)
 function createSecure(email, password, callback){
   bcrypt.genSalt(function(err, salt){
     bcrypt.hash(password, salt, function(err, hash){
-      console.log('hash:', hash)
+      // console.log('hash:', hash)
       callback(email, hash)
     })
   })
@@ -16,8 +16,8 @@ function createSecure(email, password, callback){
 function createUser(req, res, next){
   createSecure(req.body.email, req.body.password, saveUser)
   function saveUser(email, hash){
-    console.log('email:', email)
-    console.log('passwordDigest:', hash)
+    // console.log('email:', email)
+    // console.log('passwordDigest:', hash)
     MongoClient.connect(dbConnection, function(err, db){
       let userInfo = {
         fname: req.body.fname,
@@ -44,16 +44,11 @@ function loginUser(req, res, next){
         console.log('can\'t find user with email', email)
       } else if(bcrypt.compareSync(password, user.passwordDigest)){
         res.user = user;
-        console.log(user)
+        // console.log(user)
       };
       next()
     })
   })
 };
-
-function checkUser(req, res, next){
-  console.log(user)
-  next()
-}
 
 module.exports = {createUser, loginUser}

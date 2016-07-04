@@ -7,7 +7,6 @@ router.get('/', (req, res)=>{res.render('./save', {user: req.session.user})})
 
 router.post('/', saveArt, function(req, res){
   const imageSource = req.body.source;
-  // res.render('/', {user: req.session})
   console.log(imageSource + ' POST TO THE BACK END!!!!')
   res.render('./save', {user: req.session.user})
 })

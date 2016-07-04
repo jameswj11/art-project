@@ -25,8 +25,8 @@ body {
 }
 
 .logout {
-  text-align: right;
-  padding-right: 50px;
+  /*text-align: right;*/
+  /*padding-right: 50px;*/
   margin-top: 10px;
 }
 
@@ -60,6 +60,11 @@ h1.login {
 }
 
 h3.browse {
+  color: white;
+  padding-top: 30px;
+}
+
+h3.collection {
   color: white;
   padding-top: 30px;
 }

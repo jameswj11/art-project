@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<% include ../partials/head %>
+<body>
+<h3 class="collection">My Collection</h3>
+<% if(user) { %>
+  <div class="logout">
+  <form action="user/logout?_method=DELETE" method="post">
+    <input class="button" type="submit" value="logout">
+  </form>
+  </div>
+<% } %>
+<% if(favorites){ %>
+<% favorites.forEach(function(link){ %>
+  <img src="<%= link %>">
+  <% }) %>
+<% } %>
+  <!-- MY COLLECTION -->
+</body>
+</html>
