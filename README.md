@@ -9,6 +9,11 @@ IDEAS
 - Search by nationality
 - Search by century
 
+IDEAS
+- Search by artist
+- Search by nationality
+- Search by century
+
 - As a user I should be able to log into my own, authenticated account.
 - As a user I should be able to browse a listing of art works by artist, nation, museum, or period. 
 - As a user I should be able to click on an artwork and see a detailed description of the piece in a modal that pops up. 
