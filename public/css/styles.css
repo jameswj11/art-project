@@ -40,8 +40,9 @@ body {
   color: white;
 }
 
-.login{
-  color: white;
+input.login{
+  color: black;
+  background-color: white;
 }
 
 img {
