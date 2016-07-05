@@ -1,6 +1,6 @@
 'use strict'
 const {MongoClient} = require('mongodb')
-const dbConnection = 'mongodb://localhost:27017/user_auth';
+const dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
 
 function getFavorites(req, res, next){
   console.log('retrieving favorites')

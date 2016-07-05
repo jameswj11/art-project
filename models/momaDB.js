@@ -1,6 +1,6 @@
 'use strict'
 const MongoClient  = require('mongodb').MongoClient;
-const dbConnection = 'mongodb://localhost:27017/moma_art'
+const dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
 
 module.exports = {
   searchArt: function(req, res, next){
