@@ -1,10 +1,10 @@
 'use strict'
-const MongoClient  = require('mongodb').MongoClient;
-const dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
+var MongoClient  = require('mongodb').MongoClient;
+var dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
 
 module.exports = {
   searchArt: function(req, res, next){
-    const filterObj = {}
+    var filterObj = {}
     if('artist' in req.query){
       filterObj['Artist'] = req.query.artist;
     };

@@ -1,10 +1,10 @@
 'use strict'
-const API_KEY = process.env.RIJKSMUSEUM_API;
-const request = require('request')
+var API_KEY = process.env.RIJKSMUSEUM_API;
+var request = require('request')
 
 module.exports = {
   searchArt: function(req, res, next){
-    const filterObj = {
+    var filterObj = {
       imgonly: 'True',
       format: 'json',
       ps: 100,

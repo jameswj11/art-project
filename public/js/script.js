@@ -2,13 +2,13 @@
 $(function(){
   console.log('document loaded!')
 
-  const $body = $('body')
-  const $results = $('.results')
-  const $container = $('.container')
-  const $img = $('img')
-  const $modal = $('.modal')
-  const $modalContent = $('.modalContent')
-  const $modalClose = $('.modalClose')
+  var $body = $('body')
+  var $results = $('.results')
+  var $container = $('.container')
+  var $img = $('img')
+  var $modal = $('.modal')
+  var $modalContent = $('.modalContent')
+  var $modalClose = $('.modalClose')
 
   $.ajax({
     url: '/api/rijks',
@@ -16,13 +16,13 @@ $(function(){
     dataType: 'json',
     success: function(data){
       data.forEach(function(artwork){
-          const $artwork = $('<div>')
+          var $artwork = $('<div>')
 
-          const $image = $('<img>')
+          var $image = $('<img>')
             .attr('src', artwork.webImage.url)
             .val(artwork.longTitle)
 
-          const $title = $('<div>')
+          var $title = $('<div>')
             .addClass('info')
             .text(artwork.longTitle)
 
@@ -36,7 +36,7 @@ $(function(){
 
 
   $('button').click(function(){
-    let queryObject = {}
+    var queryObject = {}
     $results.empty()
 
     if($('.artist').val()!== '') {
@@ -55,13 +55,13 @@ $(function(){
       success: function(data){
         data.forEach(function(artwork){
           //create artwork elem
-          const $artwork = $('<div>')
+          var $artwork = $('<div>')
 
-          const $image = $('<img>')
+          var $image = $('<img>')
             .attr('src', artwork.webImage.url)
             .val(artwork.longTitle)
 
-          const $title = $('<div>')
+          var $title = $('<div>')
             .addClass('info')
             .text(artwork.longTitle)
 
@@ -74,11 +74,12 @@ $(function(){
     })
   })
 
-  // const toggleModal = ()=>{$modal.fadeToggle()}
+  // var toggleModal = ()=>{$modal.fadeToggle()}
 
   $results.on('dblclick', 'img', function(){
     $(this).css('border-style', 'solid').css('border-color', 'red').css('border-width', '2px')
-    const artwork = {
+
+    var artwork = {
       source: $(this).attr('src'),
       info: $(this).val()
     }

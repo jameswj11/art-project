@@ -1,31 +1,35 @@
 'use strict'
-const router = require('express').Router()
-const {createUser, loginUser} = require('../models/user')
+var router = require('express').Router()
+var {createUser, loginUser} = require('../models/user')
 
-router.get('/new', (req, res)=>{res.render('user/new')})
+router.get('/new', function(req, res){
+  res.render('user/new')
+})
 
-router.post('/new', createUser, (req, res)=>{
+router.post('/new', createUser, function(req, res){
   // console.log(res.user)
   req.session.user = res.user;
-  req.session.save((err)=>{
+  req.session.save(function(err){
     if(err) throw err;
     res.redirect('/user/login')
   })
 })
 
-router.get('/login', (req, res)=>{res.render('user/login')})
+router.get('/login', function(req, res){
+  res.render('user/login')
+})
 
-router.post('/login', loginUser, (req, res)=>{
+router.post('/login', loginUser, function(req, res){
   // console.log(res.user)
   req.session.user = res.user;
-  req.session.save((err)=>{
+  req.session.save(function(err){
     if(err) throw err;
     res.redirect('/')
   })
 })
 
-router.delete('/logout', (req, res)=>{
-  req.session.destroy((err)=>{
+router.delete('/logout', function(req, res){
+  req.session.destroy(function(err){
     res.redirect('/')
   })
 })

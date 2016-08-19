@@ -1,4 +1,6 @@
 'use strict'
-const router = require('express').Router()
-router.get('/', (req, res)=>{res.render('moma/index')})
+var router = require('express').Router()
+router.get('/', function(req, res){
+  res.render('moma/index')
+})
 module.exports = router;

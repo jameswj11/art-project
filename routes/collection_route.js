@@ -1,10 +1,12 @@
 'use strict'
-const router = require('express').Router()
-const {getFavorites} = require('../models/collection')
-const user = require('../models/user')
+var router = require('express').Router()
+var {getFavorites} = require('../models/collection')
+var user = require('../models/user')
 
-router.get('/', getFavorites, (req, res)=>{
-  res.render('collection/index', {user: req.session.user, favorites: res.favorites})
+router.get('/', getFavorites, function(req, res){
+  res.render('collection/index', {
+    user: req.session.user, favorites: res.favorites
+  })
 })
 
 module.exports = router;

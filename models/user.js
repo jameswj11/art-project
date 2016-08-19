@@ -1,9 +1,9 @@
 'use strict'
-const {MongoClient} = require('mongodb')
-const dbConnection  = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
+var {MongoClient} = require('mongodb')
+var dbConnection  = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
 
-const bcrypt        = require('bcrypt')
-const salt          = bcrypt.genSalt(10)
+var bcrypt        = require('bcrypt')
+var salt          = bcrypt.genSalt(10)
 
 function createSecure(email, password, callback){
   bcrypt.genSalt(function(err, salt){
@@ -20,7 +20,7 @@ function createUser(req, res, next){
     // console.log('email:', email)
     // console.log('passwordDigest:', hash)
     MongoClient.connect(dbConnection, function(err, db){
-      let userInfo = {
+      var userInfo = {
         fname: req.body.fname,
         lname: req.body.lname,
         email: email,
@@ -36,8 +36,8 @@ function createUser(req, res, next){
 };
 
 function loginUser(req, res, next){
-  let email = req.body.email;
-  let password = req.body.password;
+  var email = req.body.email;
+  var password = req.body.password;
   MongoClient.connect(dbConnection, function(err, db){
     db.collection('users').findOne({'email': email}, function(err, user){
       if(err) throw err;
