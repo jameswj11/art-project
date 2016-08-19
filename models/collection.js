@@ -9,7 +9,7 @@ function getFavorites(req, res, next){
   MongoClient.connect(dbConnection, function(err, db){
     db.collection('users')
       .find({'email': userEmail}, {_id: 0, favorites:[]})
-      .toArray((err, result)=>{
+      .toArray(function(err, result){
         if(err) throw err;
         res.favorites = result[0].favorites;
         console.log(res.favorites)

@@ -34,6 +34,11 @@ $(function(){
       }
     })
 
+  $(document).bind('keypress', function(event){
+    if (event.keyCode == 13){
+      $('button').trigger('click')
+    }
+  })
 
   $('button').click(function(){
     var queryObject = {}
