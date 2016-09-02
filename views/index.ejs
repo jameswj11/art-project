@@ -4,6 +4,11 @@
 <body>
   <div class="main">
     <h1>Explore the Rijksmuseum Collection</h1>
+    <p>
+        Guests please log in with:<br/>
+        email: guest@guest.com<br/>
+        password: guest
+    </p>
       <% if(user) { %>
         <h4>Welcome, <%= user.fname %></h4>
       <div>
@@ -14,7 +19,7 @@
           </li>
         </ul>
         <form action="user/logout?_method=DELETE" method="post">
-          <input class="button" type="submit" value="logout">
+          <input class="button" id="logout" type="submit" value="logout">
         </form>
       </div>
       <% } else { %>
