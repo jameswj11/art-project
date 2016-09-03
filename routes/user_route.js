@@ -7,7 +7,6 @@ router.get('/new', function(req, res){
 })
 
 router.post('/new', createUser, function(req, res){
-  // console.log(res.user)
   req.session.user = res.user;
   req.session.save(function(err){
     if(err) throw err;
@@ -20,7 +19,6 @@ router.get('/login', function(req, res){
 })
 
 router.post('/login', loginUser, function(req, res){
-  // console.log(res.user)
   req.session.user = res.user;
   req.session.save(function(err){
     if(err) throw err;

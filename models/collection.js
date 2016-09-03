@@ -1,9 +1,8 @@
 'use strict'
 var {MongoClient} = require('mongodb')
-var dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
+var dbConnection  = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/user_auth';
 
 function getFavorites(req, res, next){
-  console.log('retrieving favorites')
   var userEmail = req.session.user.email;
 
   MongoClient.connect(dbConnection, function(err, db){
@@ -14,7 +13,7 @@ function getFavorites(req, res, next){
         res.favorites = result[0].favorites;
         console.log(res.favorites)
         next()
-      }) //thanks Suprit
+      })
   })
 }
 

@@ -11,7 +11,6 @@ const userRoute       = require('./routes/user_route')
 const saveRoute       = require('./routes/save_route')
 const apiRoute        = require('./routes/api_route')
 const rijksRoute      = require('./routes/rijks_route')
-const momaRoute       = require('./routes/moma_route')
 
 
 //server setup
@@ -41,11 +40,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 //routing
-
 app.use('/', homeRoute)
 app.use('/save', saveRoute)
 app.use('/user', userRoute)
 app.use('/collection', collectionRoute)
 app.use('/api', apiRoute)
 app.use('/rijks', rijksRoute)
-app.use('/moma', momaRoute)

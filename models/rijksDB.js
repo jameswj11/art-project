@@ -15,12 +15,8 @@ module.exports = {
       filterObj['type'] = req.query.type;
     };
 
-    if('principalMaker' in req.query){
-      filterObj['principalMaker'] = req.query.principalMaker;
-    };
-
-    if('f.dating.period' in req.query){
-      filterObj['f.dating.period'] = req.query.f.dating.period;
+    if('q' in req.query){
+      filterObj['q'] = req.query.q;
     };
 
     request({

@@ -2,13 +2,10 @@
 $(function(){
   console.log('document loaded!')
 
-  var $body = $('body')
-  var $results = $('.results')
+  var $body      = $('body')
+  var $results   = $('.results')
   var $container = $('.container')
-  var $img = $('img')
-  var $modal = $('.modal')
-  var $modalContent = $('.modalContent')
-  var $modalClose = $('.modalClose')
+  var $img       = $('img')
 
   $.ajax({
     url: '/api/rijks',
@@ -18,17 +15,17 @@ $(function(){
       data.forEach(function(artwork){
           var $artwork = $('<div>')
 
-          var $image = $('<img>')
+          var $image   = $('<img>')
             .attr('src', artwork.webImage.url)
             .val(artwork.longTitle)
 
-          var $title = $('<div>')
+          var $title   = $('<div>')
             .addClass('info')
             .text(artwork.longTitle)
 
           $artwork.append($image)
                   .append($title)
-                  // .append($saveForm)
+
           $results.append($artwork)
         })
       }
@@ -45,7 +42,7 @@ $(function(){
     $results.empty()
 
     if($('.artist').val()!== '') {
-      queryObject.principalMaker = $('.artist').val()
+      queryObject.q = $('.artist').val()
     }
 
     if($('.type').val() !== 'all'){
@@ -58,6 +55,13 @@ $(function(){
       dataType: 'json',
       data: queryObject,
       success: function(data){
+        if(data.length == 0){
+          var $noResults = $('<h4>')
+            .text('No Results')
+            .css('color', 'red')
+          $('.results').append($noResults)
+        }
+
         data.forEach(function(artwork){
           //create artwork elem
           var $artwork = $('<div>')
@@ -72,17 +76,17 @@ $(function(){
 
           $artwork.append($image)
                   .append($title)
-                  // .append($saveForm)
+
           $results.append($artwork)
         })
       }
     })
   })
 
-  // var toggleModal = ()=>{$modal.fadeToggle()}
-
   $results.on('dblclick', 'img', function(){
-    $(this).css('border-style', 'solid').css('border-color', 'red').css('border-width', '2px')
+    $(this).css('border-style', 'solid')
+           .css('border-color', 'red')
+           .css('border-width', '2px')
 
     var artwork = {
       source: $(this).attr('src'),
@@ -95,7 +99,7 @@ $(function(){
       method: 'POST',
       data: artwork,
       success: function(data){
-        console.log('ajax call POST!')
+        console.log('successful POST')
       }
     })
   })
