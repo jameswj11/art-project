@@ -133,7 +133,7 @@ input#logout {
   background-color: white;
 }
 
-p {
+p#save {
   color: red;
 }
 
