@@ -3,43 +3,49 @@ $(function(){
   console.log('document loaded!')
 
   var $body      = $('body')
-  var $results   = $('.results')
+  var $onload   = $('.onLoad')
   var $container = $('.container')
   var $img       = $('img')
 
+  //get all images upon page load
   $.ajax({
     url: '/api/rijks',
     method: 'GET',
     dataType: 'json',
     success: function(data){
       data.forEach(function(artwork){
-          var $artwork = $('<div>')
+          var itemArray = []
+          var grid      = document.getElementById('grid')
+          var imgDiv    = document.createElement('div')
+          var image     = document.createElement('img')
 
-          var $image   = $('<img>')
-            .attr('src', artwork.webImage.url)
-            .val(artwork.longTitle)
+          imgDiv.title  = artwork.longTitle;
+          image.src     = artwork.webImage.url;
 
-          var $title   = $('<div>')
-            .addClass('info')
-            .text(artwork.longTitle)
+          image.classList.add('thumbnail')
+          image.classList.add('thumbnail')
 
-          $artwork.append($image)
-                  .append($title)
+          imgDiv.appendChild(image)
+          itemArray.push(imgDiv)
 
-          $results.append($artwork)
+          salvattore.appendElements(grid, itemArray)
         })
       }
     })
 
-  $(document).bind('keypress', function(event){
-    if (event.keyCode == 13){
-      $('button').trigger('click')
-    }
+  //ajax call for search
+  $(function(){
+    $(document).bind('keypress', function(event){
+      if (event.keyCode == 13){
+        $('button').trigger('click')
+      }
+    })
   })
 
   $('button').click(function(){
+    console.log('clicked')
     var queryObject = {}
-    $results.empty()
+    $onload.empty()
 
     if($('.artist').val()!== '') {
       queryObject.q = $('.artist').val()
@@ -59,31 +65,37 @@ $(function(){
           var $noResults = $('<h4>')
             .text('No Results')
             .css('color', 'red')
-          $('.results').append($noResults)
+          $('.searchResults').append($noResults)
         }
 
         data.forEach(function(artwork){
           //create artwork elem
-          var $artwork = $('<div>')
+          var itemArray = []
+          var grid      = document.getElementById('gridLarge')
+          var imgDiv    = document.createElement('div')
+          var image     = document.createElement('img')
+          var info      = document.createElement('p')
 
-          var $image = $('<img>')
-            .attr('src', artwork.webImage.url)
-            .val(artwork.longTitle)
+          info.innerHTML = artwork.longTitle;
+          image.src      = artwork.webImage.url;
 
-          var $title = $('<div>')
-            .addClass('info')
-            .text(artwork.longTitle)
+          image.classList.add('large')
+          image.classList.add('large')
+          info.classList.add('description')
 
-          $artwork.append($image)
-                  .append($title)
+          imgDiv.appendChild(image)
+          imgDiv.appendChild(info)
 
-          $results.append($artwork)
+          itemArray.push(imgDiv)
+
+          salvattore.appendElements(grid, itemArray)
         })
       }
     })
   })
 
-  $results.on('dblclick', 'img', function(){
+  //double click an image to save, post to DB
+  $onload.on('dblclick', 'img', function(){
     $(this).css('border-style', 'solid')
            .css('border-color', 'red')
            .css('border-width', '2px')

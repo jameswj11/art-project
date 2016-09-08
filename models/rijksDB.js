@@ -5,7 +5,7 @@ var request = require('request')
 module.exports = {
   searchArt: function(req, res, next){
     var filterObj = {
-      imgonly: 'True',
+      imgonly: true,
       format: 'json',
       ps: 100,
       key: API_KEY,

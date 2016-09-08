@@ -2,9 +2,14 @@
 <html>
  <% include ./partials/head %>
 <body>
-  <div class="main">
+  <div class="landing">
+    <% if(user) { %>
+      <div class="logout">
+        <form action="user/logout?_method=DELETE" method="post">
+          <input class="logoutButton" type="submit" value="logout">
+      </form>
+      </div>
     <h1>Explore the Rijksmuseum Collection</h1>
-      <% if(user) { %>
         <h4>Welcome, <%= user.fname %></h4>
       <div>
         <ul class="nav">
@@ -13,11 +18,9 @@
             <a href="/rijks">EXPLORE ART</a>
           </li>
         </ul>
-        <form action="user/logout?_method=DELETE" method="post">
-          <input class="button" id="logout" type="submit" value="logout">
-        </form>
       </div>
       <% } else { %>
+      <h1>Explore the Rijksmuseum Collection</h1>
       <p>
           Guests please use:<br/>
           email: guest@guest.com<br/>

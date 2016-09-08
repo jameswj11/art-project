@@ -3,7 +3,7 @@ body {
   background-color: black;
 }
 
-.main {
+div.landing {
   background-image: url('http://lh5.ggpht.com/NNwpBd1GteTy1QVYsJH64dJh_eb8pORRD5AtB2tfrYRvvFlM5-07MakQOYmYo3h6-09spXyHfJZbjv6ODhPJiStHjQ=s0');
   background-size: cover;
   background-attachment: fixed;
@@ -14,21 +14,86 @@ body {
   position: absolute;
 }
 
-.gallery {
+
+div.gallery {
   background-color: black;
-  height: 100vh;
+  text-align: center;
+  max-height: 100vh;
   width: 100vw;
+  margin: 0 auto;
 }
 
-.results {
+div.onLoad {
   color: white;
 }
 
-.logout {
+div.large {
+  max-width: 100%
+  max-height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.logout {
+  float: right;
+  position: relative;
   text-align: right;
   padding-right: 50px;
   margin-top: 10px;
   margin-bottom: 0px;
+}
+
+div#grid {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+div#gridLarge {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+div.thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+img.thumbnail {
+  max-width: 232px;
+  margin: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+
+img.large {
+  margin: 0px;
+  padding: 0px;
+  max-width: 550px;
+}
+
+#grid[data-columns]::before {
+  content: '5 .column.size-1of5';
+}
+
+#gridLarge[data-columns]::before {
+  content: '2 .column.size-1of2';
+}
+
+.column {
+  float: left;
+  margin: 0 auto;
+}
+
+.size-1of5 {
+  width: 20%;
+}
+
+.size-1of2 {
+  width: 50%;
 }
 
 .links {
@@ -57,7 +122,7 @@ select {
   margin-right: 10px;
 }
 
-button {
+button#searchButton {
   margin-left: 10px;
   margin-right: 10px;
   background-color: white;
@@ -75,7 +140,9 @@ h1.login {
 
 h3.browse {
   color: white;
-  padding-top: 0px;
+  padding-top: 15px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 h3.collection {
@@ -106,7 +173,7 @@ a:hover {
 }
 
 label {
-  color: white;
+  color: black;
 }
 
 input {
@@ -119,21 +186,23 @@ input {
 input.newUser {
   color: black;
   background-color: white;
-  /*border-width: 0px;*/
 }
 
-input.logout {
+input.logoutButton {
   color: red;
-  background-color: black;
   border-width: 0px;
-}
-
-input#logout {
-  color: red;
-  background-color: white;
 }
 
 p#save {
   color: red;
+  margin-bottom: 5px;
+  padding: 0px;
+}
+
+p.description {
+  color: lightgray;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 

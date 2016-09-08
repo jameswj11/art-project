@@ -4,8 +4,8 @@
 <body>
   <% if(user) { %>
     <div class="logout">
-      <form action="user/logout?_method=DELETE" method="post">
-        <input class="logout" type="submit" value="logout">
+      <form class="logout" action="user/logout?_method=DELETE" method="post">
+        <input class="logoutButton" type="submit" value="logout">
       </form>
     </div>
   <% } %>
@@ -21,15 +21,25 @@
         <option class="drawing" value="drawing">Drawings</option>
         <option class="print" value="print">Prints</option>
       </select>
-      <button>SEARCH</button><br><br>
+      <button id="searchButton">SEARCH</button><br><br>
     </div>
-    <div>
+    <div class="goToCollection">
       <a href="/collection">Go to My Collection</a><br><br>
     </div>
-    <div class="results">
-      <div class="container">
+    <div class="onLoad">
+      <div id="grid" class="container" data-columns>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
+    <div id="gridLarge" class="searchResults" data-columns>
+      <div></div>
+      <div></div>
+    </div>
   </div>
+  <script src="js/salvattore.min.js"></script>
 </body>
 </html>
