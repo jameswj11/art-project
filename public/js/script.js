@@ -2,10 +2,11 @@
 $(function(){
   console.log('document loaded!')
 
-  var $body      = $('body')
-  var $onload   = $('.onLoad')
-  var $container = $('.container')
-  var $img       = $('img')
+  var $searchResults = $('.searchResults')
+  var $body          = $('body')
+  var $onload        = $('.onLoad')
+  var $container     = $('.container')
+  var $img           = $('img')
 
   //get all images upon page load
   $.ajax({
@@ -77,10 +78,12 @@ $(function(){
           var info      = document.createElement('p')
 
           info.innerHTML = artwork.longTitle;
+          image.value    = artwork.longTitle;
           image.src      = artwork.webImage.url;
 
           image.classList.add('large')
-          image.classList.add('large')
+          imgDiv.classList.add('large')
+
           info.classList.add('description')
 
           imgDiv.appendChild(image)
@@ -95,24 +98,27 @@ $(function(){
   })
 
   //double click an image to save, post to DB
-  $onload.on('dblclick', 'img', function(){
-    $(this).css('border-style', 'solid')
-           .css('border-color', 'red')
-           .css('border-width', '2px')
+  $(function(){
+    $searchResults.on('dblclick', 'img', function(){
+      console.log($(this).val())
+      $(this).css('border-style', 'solid')
+             .css('border-color', 'red')
+             .css('border-width', '2px')
 
-    var artwork = {
-      source: $(this).attr('src'),
-      info: $(this).val()
-    }
-
-  // click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
-    $.ajax({
-      url: '/save',
-      method: 'POST',
-      data: artwork,
-      success: function(data){
-        console.log('successful POST')
+      var artwork = {
+        source: $(this).attr('src'),
+        info: $(this).val()
       }
+
+    // click issue resolved by http://stackoverflow.com/questions/26098866/jquery-img-clickfunction-selector-not-working
+      $.ajax({
+        url: '/save',
+        method: 'POST',
+        data: artwork,
+        success: function(data){
+          console.log('successful POST')
+        }
+      })
     })
   })
 })

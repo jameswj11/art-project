@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
-<% include ../partials/head %>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="/bower_components/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="/bower_components/skeleton/css/skeleton.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js">
+  </script>
+  <script type="text/javascript" src="../js/collection.js"></script>
+</head>
 <body>
 <% if(user) { %>
   <div class="logout">
-  <form action="user/logout?_method=DELETE" method="post">
-    <input class="logout" type="submit" value="logout">
-  </form>
+    <form class="logout" action="user/logout?_method=DELETE" method="post">
+      <input class="logoutButton" type="submit" value="logout">
+    </form>
   </div>
 <% } %>
-<h3 class="collection">My Collection</h3>
+<h3 class="collection">MY COLLECTION</h3>
   <div>
     <a href="/rijks">Browse Art</a><br><br>
   </div>
-<% if(favorites){ %>
-<% favorites.forEach(function(art){ %>
-  <img src="<%= art.source %>">
-  <div class="info">
-  <%= art.info %>
+
+  <div id="gridLarge" class="myCollection" data-columns>
+  <% if(favorites){ %>
+    <% favorites.forEach(function(art){ %>
+      <div>
+        <img class="large" src="<%= art.source %>" alt="">
+        <p class="description"><%= art.info %></p>
+        <p class="deleteLink">DELETE</p>
+      </div>
+    <% }) %>
+  <% } %>
   </div>
-  <% }) %>
-<% } %>
 </body>
+<script src="js/salvattore.min.js"></script>
 </html>
