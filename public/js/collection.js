@@ -14,9 +14,13 @@ $(function(){
       type: 'DELETE',
       data: {source: imgSrc},
       success: function(data){
-        console.log('sent to back end')
+        console.log('deleted')
       }
     })
+
+    var $artEntry = $(this).parent()
+    console.log($artEntry)
+    $artEntry.fadeOut()
   })
 
 
