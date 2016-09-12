@@ -1,12 +1,12 @@
 $(function(){
   console.log('collection page loaded')
-  var $deleteArt = $('.deleteLink')
+  var $delete = $('.deleteLink')
 
-  $deleteArt.hover(function(){
+  $delete.hover(function(){
     $(this).css('cursor', 'pointer')
   })
 
-  $deleteArt.click(function(){
+  $delete.click(function(){
     var imgSrc  = $(this).siblings().eq(0).attr('src')
 
     $.ajax({
@@ -22,7 +22,4 @@ $(function(){
     console.log($artEntry)
     $artEntry.fadeOut()
   })
-
-
-
 })
