@@ -35,10 +35,8 @@ div.large {
 }
 
 div.logout {
-  /*float: right;*/
   position: relative;
   text-align: right;
-  /*padding-right: 50px;*/
   margin-top: 10px;
   margin-bottom: 0px;
   max-height: 100px;
@@ -58,20 +56,17 @@ div#gridLarge {
   max-width: 1200px;
 }
 
-div.thumbnail {
+img.thumbnail {
   max-width: 100%;
-  max-height: 100%;
-  margin: 0px;
   padding: 0px;
+  overflow: hidden;
+  position: relative;
 }
 
-img.thumbnail {
-  max-width: 232px;
-  margin: 0px;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-bottom: 1px;
-  padding-top: 1px;
+div.thumbnail {
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 1px;
 }
 
 img.large {
@@ -81,24 +76,18 @@ img.large {
 }
 
 #grid[data-columns]::before {
+  margin: 0 auto;
   content: '5 .column.size-1of5';
 }
 
 #gridLarge[data-columns]::before {
+  margin: 0 auto;
   content: '2 .column.size-1of2';
 }
 
 .column {
   float: left;
   margin: 0 auto;
-}
-
-.size-1of5 {
-  width: 20%;
-}
-
-.size-1of2 {
-  width: 50%;
 }
 
 .links {
@@ -176,7 +165,18 @@ h4 {
 a {
   color: crimson;
   text-decoration: none;
-  margin: 40px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+a.saveArt {
+  color: crimson;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px;
+  padding-right: 5px;
 }
 
 a:hover {
@@ -210,6 +210,22 @@ input.logoutButton {
   border-width: 0px;
 }
 
+.saveArt {
+  display: inline-block;
+}
+
+p.saveArt {
+  color: lightgray;
+  margin-bottom: 0px;
+  padding-left: 5px;
+}
+
+div#saveArt {
+  max-height: 50px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
 p#save {
   color: crimson;
   margin-bottom: 10px;
@@ -221,10 +237,71 @@ p.description {
   max-width: 400px;
   margin: 0 auto;
   padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+p.collectionDesc {
+  color: lightgray;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 p.deleteLink {
   color: crimson;
   margin-bottom: 10px;
+}
+
+/*responsive styling below*/
+
+@media screen and (max-width: 520px){
+  #grid[data-columns]::before {
+    content: '1 .column.size-1of1';
+  }
+}
+
+@media screen and (min-width: 521px) and (max-width: 799px) {
+  #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
+}
+
+@media screen and (min-width: 800) and (max-width: 899px) {
+  #grid[data-columns]::before {
+    content: '3 .column.size-1of3';
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+  #grid[data-columns]::before {
+    content: '4 .column.size-1of4';
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #grid[data-columns]::before {
+    content: '5 .column.size-1of5';
+  }
+}
+
+.size-1of1 {
+  width: 100%;
+}
+
+.size-1of2 {
+  width: 50%;
+}
+
+.size-1of3 {
+  width: 33.333%;
+}
+
+.size-1of4 {
+  width: 25%;
+}
+
+.size-1of5 {
+  width: 20%;
 }
 

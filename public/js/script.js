@@ -23,6 +23,7 @@ $(function(){
           imgDiv.title  = artwork.longTitle;
           image.src     = artwork.webImage.url;
 
+          imgDiv.classList.add('thumbnail')
           image.classList.add('thumbnail')
           image.classList.add('thumbnail')
 
@@ -30,6 +31,7 @@ $(function(){
           itemArray.push(imgDiv)
 
           salvattore.appendElements(grid, itemArray)
+
         })
       }
     })
@@ -46,54 +48,60 @@ $(function(){
   $('button').click(function(){
     console.log('clicked')
     var queryObject = {}
-    $onload.empty()
 
-    if($('.artist').val()!== '') {
-      queryObject.q = $('.artist').val()
-    }
+    $onload.fadeOut('slow', function(){
+      $onload.empty()
 
-    if($('.type').val() !== 'all'){
-      queryObject.type = $('.type').val()
-    }
-
-    $.ajax({
-      url: '/api/rijks',
-      method: 'GET',
-      dataType: 'json',
-      data: queryObject,
-      success: function(data){
-        if(data.length == 0){
-          var $noResults = $('<h4>')
-            .text('No Results')
-            .css('color', 'red')
-          $('.searchResults').append($noResults)
-        }
-
-        data.forEach(function(artwork){
-          //create artwork elem
-          var itemArray = []
-          var grid      = document.getElementById('gridLarge')
-          var imgDiv    = document.createElement('div')
-          var image     = document.createElement('img')
-          var info      = document.createElement('p')
-
-          info.innerHTML = artwork.longTitle;
-          image.value    = artwork.longTitle;
-          image.src      = artwork.webImage.url;
-
-          image.classList.add('large')
-          imgDiv.classList.add('large')
-
-          info.classList.add('description')
-
-          imgDiv.appendChild(image)
-          imgDiv.appendChild(info)
-
-          itemArray.push(imgDiv)
-
-          salvattore.appendElements(grid, itemArray)
-        })
+      if($('.artist').val()!== '') {
+        queryObject.q = $('.artist').val()
       }
+
+      if($('.type').val() !== 'all'){
+        queryObject.type = $('.type').val()
+      }
+
+      $.ajax({
+        url: '/api/rijks',
+        method: 'GET',
+        dataType: 'json',
+        data: queryObject,
+        success: function(data){
+          if(data.length == 0){
+            var $noResults = $('<h4>')
+              .text('No Results')
+              .css('color', 'red')
+            $('.searchResults').append($noResults)
+          }
+
+          data.forEach(function(artwork){
+            //create artwork elem
+            var itemArray = []
+            var grid      = document.getElementById('gridLarge')
+            var imgDiv    = document.createElement('div')
+            var image     = document.createElement('img')
+            var info      = document.createElement('p')
+
+            info.innerHTML = artwork.longTitle;
+            image.value    = artwork.longTitle;
+            image.src      = artwork.webImage.url;
+
+            image.classList.add('large')
+            imgDiv.classList.add('large')
+
+            info.classList.add('description')
+
+            imgDiv.appendChild(image)
+            imgDiv.appendChild(info)
+
+            itemArray.push(imgDiv)
+
+            salvattore.appendElements(grid, itemArray)
+          })
+
+        //append instructions after rendering
+        $('#saveArt').append($('<p>').text('(Double-click an image to save to your collection.)').addClass('saveArt'))
+        }
+      })
     })
   })
 
