@@ -261,19 +261,19 @@ p.deleteLink {
   }
 }
 
-@media screen and (min-width: 521px) and (max-width: 799px) {
+@media screen and (min-width: 521px) and (max-width: 799px){
   #grid[data-columns]::before {
     content: '2 .column.size-1of2';
   }
 }
 
-@media screen and (min-width: 800) and (max-width: 899px) {
+@media screen and (min-width: 800) and (max-width: 899px){
   #grid[data-columns]::before {
     content: '3 .column.size-1of3';
   }
 }
 
-@media screen and (min-width: 900px) and (max-width: 1199px) {
+@media screen and (min-width: 900px) and (max-width: 1199px){
   #grid[data-columns]::before {
     content: '4 .column.size-1of4';
   }
@@ -282,6 +282,12 @@ p.deleteLink {
 @media screen and (min-width: 1200px) {
   #grid[data-columns]::before {
     content: '5 .column.size-1of5';
+  }
+}
+
+@media screen and (max-width: 1100px){
+  #gridLarge[data-columns]::before {
+    content: '1 .column.size-1of1';
   }
 }
 

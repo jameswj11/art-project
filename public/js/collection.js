@@ -1,5 +1,4 @@
 $(function(){
-  console.log('collection page loaded')
   var $delete = $('.deleteLink')
 
   $delete.hover(function(){
@@ -19,7 +18,6 @@ $(function(){
     })
 
     var $artEntry = $(this).parent()
-    console.log($artEntry)
     $artEntry.fadeOut()
   })
 })
